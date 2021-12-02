@@ -3,6 +3,7 @@
 class Session {
     private $member_id;
     public $username;
+    public $user_level;
     private $last_login;
     public const MAX_LOGIN_AGE = 60 * 60 * 24; // one day
 
@@ -21,6 +22,9 @@ class Session {
             
             $this->username = $member->username;
             $_SESSION['username'] = $member->username;
+
+            $this->user_level = $member->user_level;
+            $_SESSION['user_level'] = $member->user_level;
             
             $this->last_login = $_SESSION['last_login'] = time();
         }
@@ -69,6 +73,22 @@ class Session {
         } else {
             // this is a "get" message
             return $_SESSION['message'];
+        }
+    }
+
+    /**
+ * [verify_user_level description]
+ *
+ * @param   [type]  $user_level  [$user_level description]
+ */
+    static public function verify_user_level() {
+        //isset($this->user_level);
+        if($_SESSION['user_level'] == 'a') {
+        
+        } elseif($_SESSION['user_level'] == 'm') {
+            redirect_to(url_for('/birds/index.php'));
+        } else {
+            $errors[] = "Login was unsuccessful, please try again.";
         }
     }
     

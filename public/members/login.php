@@ -4,6 +4,7 @@ require_once('../../private/initialize.php');
 $errors = [];
 $username = '';
 $password = '';
+$user_level = '';
 
 if(is_post_request()) {
 
@@ -26,7 +27,8 @@ if(is_post_request()) {
       // Mark admin as logged in
       // Review this line
       $session->login($member);
-      redirect_to(url_for('/members/index.php'));
+      $user_level = $member->user_level;
+      $member->check_user_level($user_level);
     } else {
       // username not found or password does not match
       $errors[] = "Log in was unsuccessful.";

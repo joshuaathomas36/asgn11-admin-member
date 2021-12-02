@@ -4,6 +4,7 @@
 
   $page_title = 'Delete Member'; 
   include(SHARED_PATH . '/member-header.php'); 
+  $session->verify_user_level();
 ?>
 
   <a class="back-link" href="<?php echo url_for('/members/index.php'); ?>">&laquo; Back to List</a>

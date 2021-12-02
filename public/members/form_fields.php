@@ -4,6 +4,7 @@
 if(!isset($member)) {
   redirect_to(url_for('/members/index.php'));
 }
+$session->verify_user_level();
 ?>
 
 <dl>

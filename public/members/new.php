@@ -22,6 +22,7 @@ if(is_post_request()) {
   $member = new Member;
 }
 
+$session->verify_user_level();
 ?>
 
 <?php $page_title = 'Create a Member'; ?>

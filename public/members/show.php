@@ -4,6 +4,7 @@
   $member = Member::find_by_id($id);
   $page_title = 'Show All Users: ' . h($member->full_name());
   include(SHARED_PATH . '/member-header.php'); 
+  $session->verify_user_level();
 ?>
 
   <a class="back-link" href="<?= url_for('members/index.php'); ?>">&laquo; Back to List</a>

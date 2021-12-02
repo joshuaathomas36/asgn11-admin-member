@@ -124,7 +124,19 @@ static public function find_by_username($username) {
   }
 }
 
+/**
+ * The check_user_level method checks the user level, then directs where the user goes based on that.
+ *
+ * @param   [type]  $user_level  The user level
+ */
+static public function check_user_level($user_level) {
+  if($user_level == 'a') {
+    redirect_to(url_for('/members/links.php'));
+  } elseif($user_level == 'm') {
+    redirect_to(url_for('/birds/index.php'));
+  } else {
+    $errors[] = "Login was unsuccessful, please try again.";
   }
+}
 
-
-
+}

@@ -4,7 +4,7 @@ $page_title = 'Bird: Member Menu';
 include(SHARED_PATH . '/member-header.php'); 
 // require_login();
 $members = Member::find_all();
-
+$session->verify_user_level();
 ?>
 
 <!-- <h2>Main Menu</h2> -->
